@@ -47,9 +47,7 @@ const Board = (props) => {
   }
 
   //initialize status
-  let status;
-  
-  status = `Next player: ${xIsNext ? "X" : "O"}`;
+  let status = `Next player: ${xIsNext ? "X" : "O"}`;
 
   return (
     <div>

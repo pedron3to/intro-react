@@ -15,7 +15,8 @@ margin-left: 20px;
 
 const Game = (props) => {
   
-  const calculatorWinner = (props) => {
+  const calculatorWinner = (boardSquares) => {
+    //set of winning lines
     const winningLines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -25,7 +26,26 @@ const Game = (props) => {
       [2, 5, 8],
       [2, 4, 6],
       [0, 4, 8]
-    ]
+    ];
+    //loop through this set
+    for (let i = 0; i < winningLines.length; i++) {
+      //check  
+      cons [a, b, c] = winningLines[i];
+
+      if (boardSquares[a] && 
+          boardSquares[a] === 
+          boardSquares[b] && 
+          boardSquares[a] === 
+          boardSquares[c]) {
+           return squares[a];
+          }
+     } 
+
+  }
+
+  const winner = () => {
+
+    
   }
 
   return (
