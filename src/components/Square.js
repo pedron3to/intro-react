@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components'
 
 const SquareButton = styled.button`
@@ -21,18 +21,14 @@ const SquareButton = styled.button`
 
 `
 
-
+//Square
+//value (prop)
+//onClick function (prop)
 
 const Square = (props) => {
-
-  const [state, setState] = useState(0)
-
   return (
-    <SquareButton 
-      onClick={() => { setState({value: 'X'})}}
-    >
-     {state.value}
-    </SquareButton>
+    <SquareButton onClick={() => props.onClick()}>{props.value}</SquareButton>
+
   )
 }
 

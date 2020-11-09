@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 
 import Square from './Square'
@@ -13,31 +13,62 @@ const BoardRow = styled.div`
 `
 
 
+//Board
 const Board = (props) => {
   
-  function renderSquare(i) {
-    return <Square value={i}/>;
+  //state
+  //boardState
+  const [boardSquares, setBoardSquares] = useState([Array(9).fill(null)])
+  //turnState
+  const [xIsNext, setXIsNext] = useState(true)
+  //handleClick
+  const handleClick = index => {
+    //copy of our board state
+    const squares = [...boardSquares];
+    //if the index of the board is filled, return
+    if (squares[index]) return;
+    //mutate that copy, and X or 0
+    squares[index] = xIsNext ? "X" : "O"    
+    //calculate next turn    
+    // set the state of the board
+    setBoardSquares(squares);
+    // set the state of the turn
+    setXIsNext(!xIsNext);
   }
+
+  //function that calculates the winner
+
   
-  const status = 'Next player: X';
+  const renderSquare = (index) => {
+    return (
+      <Square value={boardSquares[index]} onClick={() => handleClick(index)}
+      />
+    );
+  }
+
+  //initialize status
+  let status;
+  
+  status = `Next player: ${xIsNext ? "X" : "O"}`;
 
   return (
     <div>
       <Status>{status}</Status>
       <BoardRow>
-        {renderSquare(0)}
+        
         {renderSquare(1)}
         {renderSquare(2)}
+        {renderSquare(3)}
       </BoardRow>
       <BoardRow>
-        {renderSquare(3)}
         {renderSquare(4)}
         {renderSquare(5)}
+        {renderSquare(6)}
       </BoardRow>
       <BoardRow>
-        {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
+        {renderSquare(9)}
       </BoardRow>
     </div>
   );
